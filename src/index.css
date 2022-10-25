@@ -7,3 +7,9 @@
     font-family: "Nunito Sans", system-ui, sans-serif;
   }
 }
+
+@layer components {
+  .transition-element {
+    @apply transition duration-300 ease-out;
+  }
+}

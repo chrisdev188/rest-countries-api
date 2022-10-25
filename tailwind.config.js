@@ -12,6 +12,10 @@ module.exports = {
         "brand-lm-bg": "hsl(0, 0%, 98%)",
         "brand-white": "hsl(0, 0%, 100%)",
       },
+      boxShadow: {
+        "bottom-lightmode": "0 1px 5px 0px rgba(0,0,0,.2)",
+        "bottom-darkmode": "0 1px 5px 0px rgba(0,0,0,.2)",
+      },
     },
   },
   plugins: [],
