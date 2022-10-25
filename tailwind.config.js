@@ -13,8 +13,8 @@ module.exports = {
         "brand-white": "hsl(0, 0%, 100%)",
       },
       boxShadow: {
-        "bottom-lightmode": "0 1px 5px 0px rgba(0,0,0,.2)",
-        "bottom-darkmode": "0 1px 5px 0px rgba(0,0,0,.2)",
+        bottom: "0 1px 5px 0px rgba(0,0,0,.2)",
+        surrounding: "0 0 5px 1px rgba(0,0,0,.2)",
       },
     },
   },
