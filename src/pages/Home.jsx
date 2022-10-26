@@ -1,10 +1,11 @@
 import React from "react";
-import { Search } from "../components";
+import { CountryList, Search } from "../components";
 
-const Home = () => {
+const Home = ({ searchTerm, handleSearch, countries }) => {
   return (
     <div className="py-8 px-4">
-      <Search />
+      <Search searchTerm={searchTerm} handleSearch={handleSearch} />
+      <CountryList countries={countries} />
     </div>
   );
 };
