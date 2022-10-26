@@ -3,21 +3,23 @@ import { useState, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
 import { Home } from "./pages";
-import { useToggle } from "./hooks";
-
-const URL = "https://restcountries.com/v3.1/all";
+import { useLocalStorage } from "./hooks";
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useToggle(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterRegion, setFilterRegion] = useState(null);
-  const [countries, setCountries] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useLocalStorage("is_dark", false);
+  const [filterRegion, setFilterRegion] = useLocalStorage(
+    "filter_region",
+    null
+  );
+  const [countries, setCountries] = useLocalStorage("countries", []);
   const regions = useMemo(
     () => ["africa", "americas", "asia", "europe", "oceania", "all"],
     []
   );
 
   useEffect(() => {
+    const URL = "https://restcountries.com/v3.1/all";
     const fetchCountries = async () => {
       const response = await fetch(URL);
       const dataPromise = await response.json();
@@ -26,19 +28,18 @@ const App = () => {
     fetchCountries().then((data) => {
       setCountries(data);
     });
-  }, []);
-
-  useEffect(() => {
-    console.log(countries);
-  }, [countries]);
+  }, [setCountries]);
 
   const handleSearch = useCallback((e) => {
     setSearchTerm(e.target.value);
   }, []);
 
-  const handleFilterByRegion = useCallback((regionName) => {
-    setFilterRegion(regionName);
-  }, []);
+  const handleFilterByRegion = useCallback(
+    (regionName) => {
+      setFilterRegion(regionName);
+    },
+    [setFilterRegion]
+  );
 
   const searchedCountries = useMemo(
     () =>

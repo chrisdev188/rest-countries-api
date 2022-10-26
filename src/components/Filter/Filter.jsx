@@ -24,6 +24,7 @@ const Filter = ({ handleFilterByRegion, regions, filterRegion }) => {
               className="capitalize p-2 hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer"
               onClick={() => {
                 handleFilterByRegion(region);
+                setIsFilterOpen(false);
               }}
             >
               {region}
