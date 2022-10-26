@@ -8,7 +8,7 @@ import { useLocalStorage } from "./hooks";
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isDarkMode, setIsDarkMode] = useLocalStorage("is_dark", false);
-  const [filterRegion, setFilterRegion] = useLocalStorage(
+  const [regionToFilter, setRegionToFilter] = useLocalStorage(
     "filter_region",
     null
   );
@@ -36,9 +36,9 @@ const App = () => {
 
   const handleFilterByRegion = useCallback(
     (regionName) => {
-      setFilterRegion(regionName);
+      setRegionToFilter(regionName);
     },
-    [setFilterRegion]
+    [setRegionToFilter]
   );
 
   const searchedCountries = useMemo(
@@ -50,13 +50,13 @@ const App = () => {
   );
 
   const filteredCountriesByRegion = useMemo(() => {
-    if (!filterRegion || filterRegion === "all") {
+    if (!regionToFilter || regionToFilter === "all") {
       return searchedCountries;
     }
     return searchedCountries.filter(
-      (country) => country.region.toLowerCase() === filterRegion
+      (country) => country.region.toLowerCase() === regionToFilter
     );
-  }, [searchedCountries, filterRegion]);
+  }, [searchedCountries, regionToFilter]);
 
   return (
     <div className={isDarkMode ? "dark" : ""}>
@@ -73,7 +73,7 @@ const App = () => {
                   countries={filteredCountriesByRegion}
                   handleFilterByRegion={handleFilterByRegion}
                   regions={regions}
-                  filterRegion={filterRegion}
+                  regionToFilter={regionToFilter}
                 />
               }
             />

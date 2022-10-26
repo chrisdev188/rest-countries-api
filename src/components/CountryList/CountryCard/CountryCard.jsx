@@ -1,4 +1,4 @@
-import React from "react";
+import { populationToString } from "../helpers";
 
 const CountryCard = ({ country }) => {
   return (
@@ -9,8 +9,10 @@ const CountryCard = ({ country }) => {
         className="rounded-t-lg h-56 w-full object-cover"
       />
       <div className="p-4">
-        <h3 className="font-semibold">{country.name.common}</h3>
-        <p>Population: {country.population}</p>
+        <h3 className="font-semibold">
+          {country.name.common} {country.flag}
+        </h3>
+        <p>Population: {populationToString(country.population)}</p>
         <p>Region: {country.region}</p>
         <p>Capital: {country.capital}</p>
       </div>

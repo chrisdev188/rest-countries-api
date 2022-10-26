@@ -1,7 +1,7 @@
 import { RiArrowDownSLine } from "react-icons/ri";
 import { useToggle } from "../../hooks";
 
-const Filter = ({ handleFilterByRegion, regions, filterRegion }) => {
+const Filter = ({ handleFilterByRegion, regions, regionToFilter }) => {
   const [isFilterOpen, setIsFilterOpen] = useToggle(false);
   return (
     <div className="w-full max-w-[15rem] relative">
@@ -10,7 +10,7 @@ const Filter = ({ handleFilterByRegion, regions, filterRegion }) => {
         onClick={setIsFilterOpen}
       >
         <span className="capitalize">
-          {filterRegion ? filterRegion : "Filter by Region"}
+          {regionToFilter ? regionToFilter : "Filter by Region"}
         </span>
         <span>
           <RiArrowDownSLine />

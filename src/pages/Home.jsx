@@ -7,16 +7,16 @@ const Home = ({
   countries,
   handleFilterByRegion,
   regions,
-  filterRegion,
+  regionToFilter,
 }) => {
   return (
     <div className="py-8 px-4">
-      <div className="flex flex-col gap-10 md:flex-row md:justify-between md:items-center ">
+      <div className="flex flex-col gap-10 md:flex-row md:justify-between md:items-center md:px-8">
         <Search searchTerm={searchTerm} handleSearch={handleSearch} />
         <Filter
           handleFilterByRegion={handleFilterByRegion}
           regions={regions}
-          filterRegion={filterRegion}
+          regionToFilter={regionToFilter}
         />
       </div>
       <CountryList countries={countries} />
