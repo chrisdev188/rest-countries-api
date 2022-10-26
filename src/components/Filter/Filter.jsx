@@ -4,7 +4,7 @@ import { useToggle } from "../../hooks";
 const Filter = ({ handleFilterByRegion, regions, filterRegion }) => {
   const [isFilterOpen, setIsFilterOpen] = useToggle(false);
   return (
-    <div className="max-w-[14rem] relative mt-12">
+    <div className="w-full max-w-[15rem] relative">
       <button
         className="dark:darkmode-element lightmode-element transition-element flex justify-between items-center  w-full p-4 shadow-surrounding rounded-lg"
         onClick={setIsFilterOpen}
