@@ -1,17 +1,21 @@
 import React, { useEffect, useMemo } from "react";
+import { useState, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
 import { Home } from "./pages";
 import { useToggle } from "./hooks";
-import { useState, useCallback } from "react";
 
 const URL = "https://restcountries.com/v3.1/all";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useToggle(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterRegion] = useState("asia");
+  const [filterRegion, setFilterRegion] = useState(null);
   const [countries, setCountries] = useState([]);
+  const regions = useMemo(
+    () => ["africa", "americas", "asia", "europe", "oceania", "all"],
+    []
+  );
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -30,6 +34,10 @@ const App = () => {
 
   const handleSearch = useCallback((e) => {
     setSearchTerm(e.target.value);
+  }, []);
+
+  const handleFilterByRegion = useCallback((regionName) => {
+    setFilterRegion(regionName);
   }, []);
 
   const searchedCountries = useMemo(
@@ -62,6 +70,9 @@ const App = () => {
                   searchTerm={searchTerm}
                   handleSearch={handleSearch}
                   countries={filteredCountriesByRegion}
+                  handleFilterByRegion={handleFilterByRegion}
+                  regions={regions}
+                  filterRegion={filterRegion}
                 />
               }
             />
