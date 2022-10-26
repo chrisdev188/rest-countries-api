@@ -2,7 +2,7 @@ import { FaSearch } from "react-icons/fa";
 
 const Search = () => {
   return (
-    <div className="dark:bg-brand-dm-elements dark:text-brand-white relative rounded-lg shadow-surrounding bg-brand-white text-brand-lm-text">
+    <div className="dark:bg-brand-dm-elements dark:text-brand-white relative rounded-lg shadow-surrounding bg-brand-white text-brand-lm-text transition-element">
       <label htmlFor="search" className="sr-only">
         Search:
       </label>

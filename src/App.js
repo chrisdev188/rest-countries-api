@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
 import { Home } from "./pages";
+import { useToggle } from "./hooks";
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useToggle(false);
 
-  const handleToggleMode = () => {
-    setIsDarkMode((prevValue) => !prevValue);
-  };
   return (
     <div className={isDarkMode ? "dark" : ""}>
       <div className="dark:bg-brand-dm-bg bg-brand-lm-bg min-h-screen transition-element">
-        <Header handleToggleMode={handleToggleMode} isDarkMode={isDarkMode} />
+        <Header handleToggleMode={setIsDarkMode} isDarkMode={isDarkMode} />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
