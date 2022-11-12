@@ -1,8 +1,7 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useMemo } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { formatWordSeparatedByHyphen, numberToLocaleString } from "../helpers";
-import { Map } from "../components";
 
 const CountryDetails = ({ countries }) => {
   const { countryName } = useParams();
@@ -13,21 +12,27 @@ const CountryDetails = ({ countries }) => {
     navigate(path);
   };
 
-  const country = countries.find(
-    (country) =>
-      formatWordSeparatedByHyphen(country.name.common) === countryName
-  );
+  const country = useMemo(() => {
+    return countries.find(
+      (country) =>
+        formatWordSeparatedByHyphen(country.name.common) === countryName
+    );
+  }, [countryName, countries]);
 
   const borders = (
     <div className="flex md:flex-col gap-4 lg:col-span-2 flex-wrap">
       Borders Countries:
       <ul className="flex gap-2 flex-wrap">
         {country.borders?.map((border) => (
-          <li
-            className="px-4 py-2 dark:darkmode-element lightmode-element transition-element rounded-sm shadow-surrounding"
-            key={border}
-          >
-            {countries.find((country) => country.cca3 === border).name.common}
+          <li key={border}>
+            <Link
+              className="px-4 py-2 dark:darkmode-element lightmode-element transition-element rounded-sm shadow-surrounding inline-block"
+              to={`/${formatWordSeparatedByHyphen(
+                countries.find((country) => country.cca3 === border).name.common
+              )}`}
+            >
+              {countries.find((country) => country.cca3 === border).name.common}
+            </Link>
           </li>
         )) || "There are no borders"}
       </ul>
@@ -39,7 +44,7 @@ const CountryDetails = ({ countries }) => {
       className="px-6 py-2 shadow-surrounding rounded-sm flex gap-2 items-center mb-20 dark:darkmode-element lightmode-element transition-element"
       onClick={backToHome}
     >
-      <FaArrowLeft /> <span>Back</span>
+      <FaArrowLeft /> <span>Back To Home</span>
     </button>
   );
 
@@ -81,10 +86,6 @@ const CountryDetails = ({ countries }) => {
     </div>
   );
 
-  const googleMap = (
-    <Map longitude={country.latlng[1]} latitude={country.latlng[0]} />
-  );
-
   return (
     <div className="md:p-12 py-6 px-4">
       {backButton}
@@ -99,7 +100,6 @@ const CountryDetails = ({ countries }) => {
           </div>
         </div>
       </div>
-      {googleMap}
     </div>
   );
 };

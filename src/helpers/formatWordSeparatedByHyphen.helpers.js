@@ -1,4 +1,4 @@
 const formatWordSeparatedByHyphen = (string) => {
-  return string.toLowerCase().split(" ").join("-");
+  return string.toLowerCase().split(" ").join("-").toLowerCase();
 };
 export default formatWordSeparatedByHyphen;
