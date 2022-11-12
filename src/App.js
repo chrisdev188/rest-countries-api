@@ -63,6 +63,7 @@ const App = () => {
       <div className="dark:bg-brand-dm-bg bg-brand-lm-bg min-h-screen transition-element">
         <Header handleToggleMode={setIsDarkMode} isDarkMode={isDarkMode} />
         <main>
+          <h1 className="sr-only">Rest Countries API App</h1>
           <Routes>
             <Route
               path="/"
