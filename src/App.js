@@ -83,6 +83,12 @@ const App = () => {
             />
           </Routes>
         </main>
+        <footer className="px-4 py-6 md:p-12 text-center dark:darkmode-element lightmode-element transition-element">
+          Built by{" "}
+          <a href="https://github.com/chrisbui188" className="underline">
+            Chris Bui
+          </a>
+        </footer>
       </div>
     </div>
   );

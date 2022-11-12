@@ -7,6 +7,7 @@ import { Map } from "../components";
 const CountryDetails = ({ countries }) => {
   const { countryName } = useParams();
   const navigate = useNavigate();
+
   const backToHome = () => {
     const path = "/";
     navigate(path);
