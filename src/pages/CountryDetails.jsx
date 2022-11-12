@@ -71,23 +71,29 @@ const CountryDetails = ({ countries }) => {
         <h3 className="text-lg font-semibold text-brand-lm-text dark:text-brand-white">
           Borders Countries:
         </h3>
-        <ul className="flex gap-4 flex-wrap">
-          {country.borders?.map((border) => (
-            <li key={border}>
-              <Link
-                className="px-4 py-6 dark:darkmode-element lightmode-element transition-element rounded-sm shadow-surrounding block w-[10rem] h-full"
-                to={`/${formatWordSeparatedByHyphen(
-                  findCountryWithBorder(border).name.common
-                )}`}
-              >
-                <img src={findCountryWithBorder(border).flags.png} alt="" />
-                <h3 className="mt-4">
-                  {findCountryWithBorder(border).name?.common}
-                </h3>
-              </Link>
-            </li>
-          )) || "There are no borders"}
-        </ul>
+        {country.borders ? (
+          <ul className="flex gap-4 flex-wrap">
+            {country.borders?.map((border) => (
+              <li key={border}>
+                <Link
+                  className="px-4 py-6 dark:darkmode-element lightmode-element transition-element rounded-sm shadow-surrounding block w-[10rem] h-full"
+                  to={`/${formatWordSeparatedByHyphen(
+                    findCountryWithBorder(border).name.common
+                  )}`}
+                >
+                  <img src={findCountryWithBorder(border).flags.png} alt="" />
+                  <h4 className="mt-4">
+                    {findCountryWithBorder(border).name?.common}
+                  </h4>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-brand-lm-text dark:text-brand-white">
+            There are no borders
+          </p>
+        )}
       </div>
     );
   };
