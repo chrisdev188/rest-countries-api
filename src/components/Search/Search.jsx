@@ -3,9 +3,6 @@ import { FaSearch } from "react-icons/fa";
 const Search = ({ searchTerm, handleSearch }) => {
   return (
     <div className="relative rounded-lg shadow-surrounding transition-element dark:darkmode-element lightmode-element text-brand-lm-input w-full max-w-xl">
-      <label htmlFor="search" className="sr-only">
-        Search:
-      </label>
       <input
         type="search"
         value={searchTerm}
