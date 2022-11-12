@@ -11,6 +11,7 @@ const Home = ({
 }) => {
   return (
     <div className="py-8 px-4">
+      <h2 className="sr-only">Home page</h2>
       <div className="flex flex-col gap-10 md:flex-row md:justify-between md:items-center md:px-8">
         <Search searchTerm={searchTerm} handleSearch={handleSearch} />
         <Filter
