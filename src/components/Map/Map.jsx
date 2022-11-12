@@ -30,7 +30,7 @@ const MapWrapper = ({ longitude, latitude }) => {
   const zoom = 6;
   const center = { lat: latitude, lng: longitude };
   return (
-    <Wrapper apiKey={"AIzaSyDBhqUWczNtvBP_rqqolqgwK8jXSppvl_8"} render={render}>
+    <Wrapper apiKey={process.env.GOOGLE_MAP_API_KEY} render={render}>
       <Map center={center} zoom={zoom} />
     </Wrapper>
   );
