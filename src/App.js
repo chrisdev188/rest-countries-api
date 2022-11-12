@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { useState, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./components";
-import { Home } from "./pages";
+import { CountryDetails, Home } from "./pages";
 import { useLocalStorage } from "./hooks";
 
 const App = () => {
@@ -76,6 +76,10 @@ const App = () => {
                   regionToFilter={regionToFilter}
                 />
               }
+            />
+            <Route
+              path="/:countryName"
+              element={<CountryDetails countries={countries} />}
             />
           </Routes>
         </main>
